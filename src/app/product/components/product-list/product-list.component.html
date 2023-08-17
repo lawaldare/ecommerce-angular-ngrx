@@ -1,0 +1,19 @@
+<h1>Welcome to dl's Shop!</h1>
+<p>You are few click away to buy best things on online market</p>
+
+<ng-container *ngIf="products$ | async as products; else loadingTemplate">
+  <ng-container *ngIf="products.length; else emptyTemplate">
+    <dl-product-card [product]="product" *ngFor="let product of products"></dl-product-card>
+  </ng-container>
+  <ng-template #emptyTemplate>
+    <p>
+      No products available right now, please try again later!
+    </p>
+  </ng-template>
+</ng-container>
+
+<ng-template #loadingTemplate>
+  <div class="loader">
+    <nz-spin nzSimple></nz-spin>
+  </div>
+</ng-template>

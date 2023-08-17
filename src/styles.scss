@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./assets/css/fonts.scss";
+
+:root {
+  --primary-color: #001628;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+.ant-rate {
+  color: #ffa51c !important;
+}
+
+.ant-ribbon {
+  background-color: var(--primary-color) !important;
+}
+
+.ant-btn-primary {
+  border-color: var(--primary-color) !important;
+  background: var(--primary-color) !important;
+}
