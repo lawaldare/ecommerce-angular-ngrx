@@ -11,3 +11,22 @@ nz-select {
 .cart-text {
   font-size: 2rem;
 }
+
+section {
+  border: 1px solid var(--primary-color);
+  height: 15rem;
+
+  article.image {
+    height: 100%;
+  }
+
+  article.content {
+    .product-price {
+      margin: 0;
+    }
+  }
+}
+
+nz-select {
+  margin-top: 0.5rem;
+}

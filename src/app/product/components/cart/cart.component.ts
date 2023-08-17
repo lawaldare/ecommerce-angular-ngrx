@@ -7,8 +7,8 @@ import { Product } from '../../services/product.service';
   selector: 'dl-cart',
   templateUrl: './cart.component.html',
   styleUrls: [
-    './cart.component.scss',
     '../product-card/product-card.component.scss',
+    './cart.component.scss',
   ],
 })
 export class CartComponent implements OnInit {
