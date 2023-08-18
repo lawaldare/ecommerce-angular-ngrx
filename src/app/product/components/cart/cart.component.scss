@@ -12,6 +12,32 @@ nz-select {
   font-size: 2rem;
 }
 
+main {
+  display: flex;
+  justify-content: space-between;
+
+  .items {
+    width: 80%;
+  }
+
+  .total {
+    width: 18%;
+    display: block;
+    text-align: center;
+
+    p {
+      font-size: 2rem;
+      margin: 1rem 0;
+      font-weight: 500;
+
+      span {
+        font-weight: 700;
+        font-size: 2.2rem;
+      }
+    }
+  }
+}
+
 section {
   border: 1px solid var(--primary-color);
   height: 15rem;
@@ -21,8 +47,13 @@ section {
   }
 
   article.content {
+    h2 {
+      font-size: 1.5rem;
+    }
     .product-price {
       margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
     }
   }
 }

@@ -1,18 +1,26 @@
 <h2 class="cart-title">Shopping Basket</h2>
 
 <ng-container *ngIf="cartItemProducts$ | async as cartItemProducts; else emptyTemplate">
-  <section *ngFor="let product of cartItemProducts">
-    <article class="image">
-      <img [src]="product.image" alt="product image">
-    </article>
-    <article class="content">
-      <h2 class="product-title">{{ product.title }}</h2>
-      <p class="product-price">{{ product.price | currency: '£' }}</p>
-      <nz-select [(ngModel)]="product.quantity" (ngModelChange)="changeQuantity($event, product)">
-        <nz-option *ngFor="let quantity of counts" [nzValue]="quantity" [nzLabel]="quantity"></nz-option>
-      </nz-select>
-    </article>
-  </section>
+  <main>
+    <div class="items">
+      <section *ngFor="let product of cartItemProducts">
+        <article class="image">
+          <img [src]="product.image" alt="product image">
+        </article>
+        <article class="content">
+          <h2 class="product-title">{{ product.title }}</h2>
+          <p class="product-price">{{ product.price | currency: '£' }}</p>
+          <nz-select [(ngModel)]="product.quantity" (ngModelChange)="changeQuantity($event, product)">
+            <nz-option *ngFor="let quantity of counts" [nzValue]="quantity" [nzLabel]="quantity"></nz-option>
+          </nz-select>
+        </article>
+      </section>
+    </div>
+    <section class="total">
+      <p>Subtotal ({{ numberOfCartItems$ | async }} items): <span>{{ totalAmount | currency: '£' }}</span></p>
+      <button class="checkout-button" nz-button nzType="primary">Proceed to Checkout </button>
+    </section>
+  </main>
 </ng-container>
 <ng-template #emptyTemplate>
   <p class="cart-text">Your cart is empty</p>
