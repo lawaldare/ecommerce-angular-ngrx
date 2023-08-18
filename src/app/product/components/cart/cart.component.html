@@ -10,9 +10,15 @@
         <article class="content">
           <h2 class="product-title">{{ product.title }}</h2>
           <p class="product-price">{{ product.price | currency: '£' }}</p>
-          <nz-select [(ngModel)]="product.quantity" (ngModelChange)="changeQuantity($event, product)">
+          <!-- <nz-select [(ngModel)]="product.quantity" (ngModelChange)="changeQuantity($event, product)">
             <nz-option *ngFor="let quantity of counts" [nzValue]="quantity" [nzLabel]="quantity"></nz-option>
-          </nz-select>
+          </nz-select> -->
+          <div class="controls">
+            <p>Quantity: </p>
+            <div class="control" (click)="updateQuatity('reduce', product)">-</div>
+            <div>{{ product.quantity }}</div>
+            <div class="control" (click)="updateQuatity('add', product)">+</div>
+          </div>
         </article>
       </section>
     </div>

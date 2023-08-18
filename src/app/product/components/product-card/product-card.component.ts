@@ -29,7 +29,9 @@ export class ProductCardComponent implements OnChanges {
 
   addProductToCart(product: Product) {
     this.store.dispatch(
-      ProductListAction.addProductToCart({ params: { product } })
+      ProductListAction.addProductToCart({
+        params: { product },
+      })
     );
     this.store.dispatch(ProductListAction.increaseNumberOfItemsInCart());
   }

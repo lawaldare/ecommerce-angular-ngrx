@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { DashboardSelectors } from '../../state/product.selectors';
 import { Product } from '../../services/product.service';
 import { tap } from 'rxjs';
+import { ProductListAction } from '../../state/product.actions';
 
 @Component({
   selector: 'dl-cart',
@@ -36,5 +37,21 @@ export class CartComponent implements OnInit {
   constructor(private store: Store) {}
   ngOnInit(): void {}
 
-  changeQuantity(quantity: number, product: Product) {}
+  updateQuatity(type: string, product: Product) {
+    if (type === 'add') {
+      this.store.dispatch(
+        ProductListAction.addProductToCart({
+          params: { product },
+        })
+      );
+      this.store.dispatch(ProductListAction.increaseNumberOfItemsInCart());
+    } else {
+      this.store.dispatch(
+        ProductListAction.removeProductFromCart({
+          params: { product },
+        })
+      );
+      this.store.dispatch(ProductListAction.decreaseNumberOfItemsInCart());
+    }
+  }
 }

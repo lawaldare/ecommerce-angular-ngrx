@@ -13,20 +13,42 @@ const updateCartItemProducts = (
   let acc: Product[] = [];
   let obj: any = {};
   if (product) {
-    acc = cartItems.filter((pro) => pro.id !== productAdded.id);
+    const productIndex = cartItems.findIndex((item) => item.id === product.id);
+    cartItems.splice(productIndex, 1);
+    acc = [...cartItems];
     let count = product.quantity + 1;
     obj = {
       ...product,
       quantity: count,
     };
+    acc.splice(productIndex, 0, obj);
   } else {
     acc = [...cartItems];
     obj = {
       ...productAdded,
       quantity: 1,
     };
+    acc.push(obj);
   }
-  acc.push(obj);
+  return acc;
+};
+const removeProductFromCart = (
+  cartItems: Product[],
+  productRemoved: Product
+): Product[] => {
+  let acc: Product[] = [];
+  let obj: any = {};
+  const productIndex = cartItems.findIndex(
+    (item) => item.id === productRemoved.id
+  );
+  cartItems.splice(productIndex, 1);
+  acc = [...cartItems];
+  let count = productRemoved.quantity === 0 ? 0 : productRemoved.quantity - 1;
+  obj = {
+    ...productRemoved,
+    quantity: count,
+  };
+  acc.splice(productIndex, 0, obj);
   return acc;
 };
 const initialState: ProductListState = {
@@ -58,9 +80,22 @@ const reducer = createReducer(
   ),
 
   on(
+    ProductListAction.removeProductFromCart,
+    (state: ProductListState, action): ProductListState => {
+      return {
+        ...state,
+        cartItemProducts: removeProductFromCart(
+          [...(state.cartItemProducts ?? [])],
+          action.params.product
+        ),
+      };
+    }
+  ),
+
+  on(
     ProductListAction.increaseNumberOfItemsInCart,
     (state: ProductListState, action): ProductListState => {
-      const updatedNumberOfItemsInCart = state.numberOfItemsInCart + 1;
+      let updatedNumberOfItemsInCart = state.numberOfItemsInCart + 1;
       return {
         ...state,
         numberOfItemsInCart: updatedNumberOfItemsInCart,
@@ -71,7 +106,10 @@ const reducer = createReducer(
   on(
     ProductListAction.decreaseNumberOfItemsInCart,
     (state: ProductListState, action): ProductListState => {
-      const updatedNumberOfItemsInCart = state.numberOfItemsInCart - 1;
+      let updatedNumberOfItemsInCart = state.numberOfItemsInCart - 1;
+      if (updatedNumberOfItemsInCart < 0) {
+        updatedNumberOfItemsInCart = 0;
+      }
       return {
         ...state,
         numberOfItemsInCart: updatedNumberOfItemsInCart,

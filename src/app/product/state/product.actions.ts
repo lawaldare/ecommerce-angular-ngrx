@@ -7,6 +7,8 @@ const GET_PRODUCT_LIST_FAIL = `${GET_PRODUCT_LIST} fail`;
 
 const ADD_PRODUCT_TO_CART = '[Product List] Add product to cart';
 
+const REMOVE_PRODUCT_FROM_CART = '[Cart] Remove product from cart';
+
 const INCREASE_NUMBER_OF_ITEMS_IN_CART =
   '[Product List] Increase number of items in cart';
 const DECREASE_NUMBER_OF_ITEMS_IN_CART =
@@ -26,6 +28,11 @@ export const ProductListAction = {
 
   addProductToCart: createAction(
     ADD_PRODUCT_TO_CART,
+    props<{ params: { product: Product } }>()
+  ),
+
+  removeProductFromCart: createAction(
+    REMOVE_PRODUCT_FROM_CART,
     props<{ params: { product: Product } }>()
   ),
 
