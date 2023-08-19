@@ -1,1 +1,14 @@
-<p>single-product works!</p>
+<ng-container *ngIf="product$ | async as product">
+  <section>
+    <article class="image">
+      <img [src]="product.image" alt="product image">
+    </article>
+    <article class="content">
+      <h2 class="product-title">{{ product.title }}</h2>
+      <nz-rate [ngModel]="product.rating.rate" nzAllowHalf></nz-rate>
+      <p class="product-price">{{ product.price | currency: '£' }}</p>
+      <p class="product-description">{{ product.description }}</p>
+      <button nz-button nzType="primary" (click)="addProductToCart(product)">Add To Cart</button>
+    </article>
+  </section>
+</ng-container>

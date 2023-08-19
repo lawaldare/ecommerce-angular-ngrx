@@ -67,6 +67,22 @@ const reducer = createReducer(
   ),
 
   on(
+    ProductListAction.getSingleProductSuccess,
+    (state: ProductListState, action): ProductListState => ({
+      ...state,
+      selectedProduct: action.params.product,
+    })
+  ),
+
+  on(
+    ProductListAction.removeSelectedProduct,
+    (state: ProductListState, action): ProductListState => ({
+      ...state,
+      selectedProduct: undefined,
+    })
+  ),
+
+  on(
     ProductListAction.addProductToCart,
     (state: ProductListState, action): ProductListState => {
       return {

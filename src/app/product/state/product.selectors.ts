@@ -9,6 +9,10 @@ const productListState = createFeatureSelector<ProductListState>(
 export const DashboardSelectors = {
   state: productListState,
   products: createSelector(productListState, (state) => state.products),
+  selectedProduct: createSelector(
+    productListState,
+    (state) => state.selectedProduct
+  ),
   cartItemProducts: createSelector(
     productListState,
     (state) => state.cartItemProducts

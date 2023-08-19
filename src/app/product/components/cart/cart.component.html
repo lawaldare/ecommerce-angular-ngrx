@@ -15,9 +15,9 @@
           </nz-select> -->
           <div class="controls">
             <p>Quantity: </p>
-            <div class="control" (click)="updateQuatity('reduce', product)">-</div>
+            <div class="control" (click)="productService.updateQuatity('reduce', product)">-</div>
             <div>{{ product.quantity }}</div>
-            <div class="control" (click)="updateQuatity('add', product)">+</div>
+            <div class="control" (click)="productService.updateQuatity('add', product)">+</div>
           </div>
         </article>
       </section>

@@ -1,11 +1,11 @@
 <ng-container *ngIf="product">
   <nz-ribbon [nzText]="stock">
     <section>
-      <article class="image">
+      <article class="image" (click)="selectProduct(product)">
         <img [src]="product.image" alt="product image">
       </article>
       <article class="content">
-        <h2 class="product-title">{{ product.title }}</h2>
+        <h2 class="product-title" (click)="selectProduct(product)">{{ product.title }}</h2>
         <nz-rate [ngModel]="product.rating.rate" nzAllowHalf></nz-rate>
         <p class="product-price">{{ product.price | currency: '£' }}</p>
         <p class="product-description">{{ product.description | truncate }}</p>

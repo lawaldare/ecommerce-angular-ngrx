@@ -11,9 +11,10 @@ import { ProductModule } from './product/product.module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ReceiptComponent } from './components/receipt/receipt.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, ReceiptComponent],
   imports: [
     ProductModule,
     BrowserModule,

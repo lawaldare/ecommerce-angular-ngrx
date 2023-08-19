@@ -8,6 +8,7 @@ import {
 import { Product } from '../../services/product.service';
 import { Store } from '@ngrx/store';
 import { ProductListAction } from '../../state/product.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dl-product-card',
@@ -19,7 +20,7 @@ export class ProductCardComponent implements OnChanges {
 
   stock!: string;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnChanges(changes: any): void {
     if (changes.product.currentValue) {
@@ -34,5 +35,9 @@ export class ProductCardComponent implements OnChanges {
       })
     );
     this.store.dispatch(ProductListAction.increaseNumberOfItemsInCart());
+  }
+
+  selectProduct(product: Product) {
+    this.router.navigate(['/product', product.id]);
   }
 }
