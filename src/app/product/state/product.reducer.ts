@@ -83,6 +83,20 @@ const reducer = createReducer(
   ),
 
   on(
+    ProductListAction.removeCartItems,
+    (state: ProductListState, action): ProductListState => ({
+      ...state,
+      cartItemProducts: undefined,
+    })
+  ),
+  on(
+    ProductListAction.resetNumberOfItemsInCart,
+    (state: ProductListState, action): ProductListState => ({
+      ...state,
+      numberOfItemsInCart: 0,
+    })
+  ),
+  on(
     ProductListAction.addProductToCart,
     (state: ProductListState, action): ProductListState => {
       return {

@@ -13,12 +13,16 @@ const ADD_PRODUCT_TO_CART = '[Product List] Add product to cart';
 
 const REMOVE_PRODUCT_FROM_CART = '[Cart] Remove product from cart';
 
-const REMOVE_SELECTED_PRODUCT = '[Cart] Remove Selected Product';
+const REMOVE_SELECTED_PRODUCT = '[Cart] Remove selected product';
+
+const REMOVE_CART_ITEMS = '[Receipt] Remove cart items';
 
 const INCREASE_NUMBER_OF_ITEMS_IN_CART =
   '[Product List] Increase number of items in cart';
 const DECREASE_NUMBER_OF_ITEMS_IN_CART =
   '[Product List] Decrease number of items in cart';
+
+const RESET_NUMBER_OF_ITEMS_IN_CART = '[Receipt] Reset number of items in cart';
 
 export const ProductListEffect = {
   GET_PRODUCT_LIST,
@@ -56,5 +60,9 @@ export const ProductListAction = {
   increaseNumberOfItemsInCart: createAction(INCREASE_NUMBER_OF_ITEMS_IN_CART),
   decreaseNumberOfItemsInCart: createAction(DECREASE_NUMBER_OF_ITEMS_IN_CART),
 
+  resetNumberOfItemsInCart: createAction(RESET_NUMBER_OF_ITEMS_IN_CART),
+
   removeSelectedProduct: createAction(REMOVE_SELECTED_PRODUCT),
+
+  removeCartItems: createAction(REMOVE_CART_ITEMS),
 };
