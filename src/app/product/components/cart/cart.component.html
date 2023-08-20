@@ -24,7 +24,7 @@
     </div>
     <section class="total">
       <p>Subtotal ({{ numberOfCartItems$ | async }} items): <span>{{ totalAmount | currency: '£' }}</span></p>
-      <button class="checkout-button" nz-button nzType="primary">Proceed to Checkout </button>
+      <button class="checkout-button" nz-button nzType="primary" (click)="proceed()">Proceed to Checkout </button>
     </section>
   </main>
 </ng-container>

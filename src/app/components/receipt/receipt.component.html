@@ -1,1 +1,28 @@
-<p>receipt works!</p>
+<h1>Receipt</h1>
+<ng-container *ngIf="cartItemProducts$ | async as cartItemProducts; else emptyTemplate">
+  <section id="htmlData">
+    <p>Thanks for patronizing Us</p>
+    <p class="summary">Summary</p>
+    <nz-table #receiptTable [nzData]="cartItemProducts" [nzFrontPagination]="false">
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Item</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of receiptTable.data; let i = index">
+          <td>{{i + 1}}</td>
+          <td>{{item.title}} (x {{ item.quantity }})</td>
+          <td>{{(item.price * item.quantity) | currency: '£'}}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </section>
+  <button nz-button nzType="primary" (click)="download()">Download Receipt </button>
+</ng-container>
+
+<ng-template #emptyTemplate>
+  Error Occurred, please try again!
+</ng-template>

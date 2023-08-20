@@ -6,6 +6,7 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 const modules = [
   NzLayoutModule,
@@ -14,6 +15,7 @@ const modules = [
   NzButtonModule,
   NzSpinModule,
   NzSelectModule,
+  NzTableModule,
 ];
 
 @NgModule({
