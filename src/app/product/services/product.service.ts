@@ -44,12 +44,17 @@ export class ProductService {
       );
       this.store.dispatch(ProductListAction.increaseNumberOfItemsInCart());
     } else {
-      this.store.dispatch(
-        ProductListAction.removeProductFromCart({
-          params: { product },
-        })
-      );
-      this.store.dispatch(ProductListAction.decreaseNumberOfItemsInCart());
+      console.log(product.quantity);
+      if (product.quantity > 0) {
+        this.store.dispatch(
+          ProductListAction.removeProductFromCart({
+            params: { product },
+          })
+        );
+        this.store.dispatch(ProductListAction.decreaseNumberOfItemsInCart());
+      } else {
+        console.log('Do nothng');
+      }
     }
   }
 }

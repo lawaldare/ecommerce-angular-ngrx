@@ -30,7 +30,8 @@ const updateCartItemProducts = (
     };
     acc.push(obj);
   }
-  return acc;
+  const filterItems = acc.filter((item) => item.quantity > 0);
+  return filterItems;
 };
 const removeProductFromCart = (
   cartItems: Product[],
