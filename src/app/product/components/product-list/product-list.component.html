@@ -1,7 +1,7 @@
 <h1>Welcome to dl's Shop!</h1>
 <p>You are few click away to buy best things on online market</p>
 
-<button nz-button nzType="primary" (click)="signInWithGoogle()">Proceed to Checkout </button>
+<!-- <button nz-button nzType="primary" (click)="signInWithGoogle()">Proceed to Checkout </button> -->
 
 <ng-container *ngIf="products$ | async as products; else loadingTemplate">
   <ng-container *ngIf="products.length; else emptyTemplate">
