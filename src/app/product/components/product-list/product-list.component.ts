@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DashboardSelectors } from '../../state/product.selectors';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'dl-product-list',
@@ -9,5 +10,9 @@ import { DashboardSelectors } from '../../state/product.selectors';
 })
 export class ProductListComponent {
   products$ = this.store.select(DashboardSelectors.products);
-  constructor(private store: Store) {}
+  constructor(private store: Store, private ps: ProductService) {}
+
+  signInWithGoogle() {
+    this.ps.signInWithGoogle();
+  }
 }

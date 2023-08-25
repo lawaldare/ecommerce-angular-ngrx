@@ -12,6 +12,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ReceiptComponent } from './components/receipt/receipt.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, ReceiptComponent],
@@ -28,6 +31,8 @@ import { ReceiptComponent } from './components/receipt/receipt.component';
       name: "Dare Lawal's store",
       maxAge: 100,
     }),
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent],
